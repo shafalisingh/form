@@ -1,0 +1,41 @@
+<%= form_with(model: scrapy_config, local: true) do |form| %>
+  <% if scrapy_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scrapy_config.errors.count, "error") %> prohibited this scrapy_config from being saved:</h2>
+
+      <ul>
+        <% scrapy_config.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, Client.all, :id , :name, {:prompt => 'Select the Client'}%>
+  </div>
+
+  <div class="field">
+    <%= form.label :tgm_assigned_mailbox %>
+    <%= form.text_field :tgm_assigned_mailbox, id: :scrapy_config_tgm_assigned_mailbox %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approved_senders %>
+    <%= form.text_area :approved_senders_as_string, id: :scrapy_config_approved_senders, name: 'scrapy_config[approved_senders]' %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :approved_mail_subjects %>
+    <%= form.text_area :approved_mail_subjects_as_string, id: :scrapy_config_approved_mail_subjects, name: 'scrapy_config[approved_mail_subjects]'  %>
+  </div>
+
+
+
+  </div>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

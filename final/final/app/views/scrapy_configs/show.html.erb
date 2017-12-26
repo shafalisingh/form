@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Client:</strong>
+  <%= @scrapy_config.client_id %>
+</p>
+
+<p>
+  <strong>Tgm assigned mailbox:</strong>
+  <%= @scrapy_config.tgm_assigned_mailbox %>
+</p>
+
+<p>
+  <strong>Approved senders:</strong>
+  <%= @scrapy_config.approved_senders.join ', ' %>
+</p>
+
+
+<p>
+  <strong>Approved mail subjects:</strong>
+  <%= @scrapy_config.approved_mail_subjects.join ', ' %>
+</p>
+
+
+<%= link_to 'Edit', edit_scrapy_config_path(@scrapy_config) %> |
+<%= link_to 'Back', scrapy_configs_path %>
