@@ -1,0 +1,57 @@
+<%= simple_form_for @scrapy_config do |form| %>
+  <% if scrapy_config.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scrapy_config.errors.count, "error") %> prohibited this scrapy_config from being saved:</h2>
+
+      <ul>
+      <% scrapy_config.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= form.label :client_id %>
+    <%= form.collection_select :client_id, Client.all, :id , :name, {:prompt => 'Select the Client'}%>
+  </div>
+
+  <div class="field">
+    <%= form.label :tgm_assigned_mailbox %>
+    <%= form.text_area :tgm_assigned_mailbox, id: :scrapy_config_tgm_assigned_mailbox %>
+  </div>
+
+  <div class="field">
+    <%= form.label :approved_senders %>
+    <%= form.text_area :approved_senders_as_string, id: :scrapy_config_approved_senders, name: 'scrapy_config[approved_senders]',:multiple => true %>
+
+  </div>
+
+  <div class="field">
+    <%= form.label :approved_mail_subjects %>
+    <%= form.text_field :approved_mail_subjects_as_string, id: :scrapy_config_approved_mail_subjects, name: 'scrapy_config[approved_mail_subjects]'  %>
+  </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Attachment Type</th>
+    </tr>
+    </thead>
+    <tbody class="fields">
+      <%=form.simple_fields_for :attachments do |builder|%>
+
+      <%= render 'attachment',form: builder %>
+        <% end %>
+    </tbody>
+
+  </table>
+
+
+
+
+  <div class="actions">
+    <%= form.submit %>
+
+    <%= link_to_add_row('Add Attachment', form, :attachments) %>
+  </div>
+<% end %>

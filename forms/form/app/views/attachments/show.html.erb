@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Scrapy config:</strong>
+  <%= @attachment.scrapy_config_id %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @attachment.type_of_attachment %>
+</p>
+
+<%= link_to 'Edit', edit_attachment_path(@attachment) %> |
+<%= link_to 'Back', attachments_path %>

@@ -1,0 +1,12 @@
+<tr class="nested-fields">
+  <td><%= form.label :attachments_attributes%></td>
+  <td><%= form.select :type_of_attachment, [["LEAD"],["EVENT"]],{:prompt => 'Select the type of attachment'} %></td>
+  <td>
+    <%= form.input_field :_destroy, as: :hidden %>
+    <%= link_to 'Delete', '#', class: 'remove_record' %>
+  </td>
+
+
+
+
+</tr>
