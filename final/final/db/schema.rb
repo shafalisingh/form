@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226212022) do
+ActiveRecord::Schema.define(version: 20171226222625) do
+
+  create_table "attachments", force: :cascade do |t|
+    t.string "attachment_type"
+    t.string "attachment_name"
+    t.integer "priority"
+    t.integer "scrapy_config_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scrapy_config_id"], name: "index_attachments_on_scrapy_config_id"
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string "name"

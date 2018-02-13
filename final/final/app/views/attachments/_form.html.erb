@@ -1,0 +1,37 @@
+<%= form_with(model: attachment, local: true) do |form| %>
+  <% if attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(attachment.errors.count, "error") %> prohibited this attachment from being saved:</h2>
+
+      <ul>
+      <% attachment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :attachment_type %>
+    <%= form.text_field :attachment_type, id: :attachment_attachment_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :attachment_name %>
+    <%= form.text_field :attachment_name, id: :attachment_attachment_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :priority %>
+    <%= form.number_field :priority, id: :attachment_priority %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scrapy_config_id %>
+    <%= form.text_field :scrapy_config_id, id: :attachment_scrapy_config_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

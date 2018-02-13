@@ -30,6 +30,17 @@
   <% end %>
 
   </tbody>
+  <% @scrapy_configs.each do |att| %>
+    <td><%att.attachments.each do |a|%></td>
+        <h3>
+        <td><%= a.attachment_type %></td>
+        <td><%= a.attachment_name %></td>
+        <td><%= a.priority %></td>
+        </h3>
+      <%end%>
+  <% end %>
+  </tbody>
+</table>
 </table>
 
 <br>

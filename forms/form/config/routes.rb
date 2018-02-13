@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attach_files
   resources :file_attachments
   resources :attachments
   resources :scrapy_configs

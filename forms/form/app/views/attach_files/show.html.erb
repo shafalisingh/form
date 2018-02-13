@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Attachment type:</strong>
+  <%= @attach_file.attachment_type %>
+</p>
+
+<p>
+  <strong>Attachment name:</strong>
+  <%= @attach_file.attachment_name %>
+</p>
+
+<p>
+  <strong>Priority:</strong>
+  <%= @attach_file.priority %>
+</p>
+
+<p>
+  <strong>Maps to:</strong>
+  <%= @attach_file.maps_to %>
+</p>
+
+<p>
+  <strong>Scrapy config:</strong>
+  <%= @attach_file.scrapy_config %>
+</p>
+
+<%= link_to 'Edit', edit_attach_file_path(@attach_file) %> |
+<%= link_to 'Back', attach_files_path %>

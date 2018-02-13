@@ -1,4 +1,4 @@
-<%= form_with(model: scrapy_config, local: true) do |form| %>
+<%= simple_form_for(@scrapy_config) do |f| %>
   <% if scrapy_config.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(scrapy_config.errors.count, "error") %> prohibited this scrapy_config from being saved:</h2>
@@ -12,30 +12,48 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :client_id %>
-    <%= form.collection_select :client_id, Client.all, :id , :name, {:prompt => 'Select the Client'}%>
+    <%= f.label :client_id %>
+    <%= f.collection_select :client_id, Client.all, :id , :name, {:prompt => 'Select the Client'}%>
   </div>
 
   <div class="field">
-    <%= form.label :tgm_assigned_mailbox %>
-    <%= form.text_field :tgm_assigned_mailbox, id: :scrapy_config_tgm_assigned_mailbox %>
+    <%= f.label :tgm_assigned_mailbox %>
+    <%= f.text_field :tgm_assigned_mailbox, id: :scrapy_config_tgm_assigned_mailbox %>
   </div>
 
   <div class="field">
-    <%= form.label :approved_senders %>
-    <%= form.text_area :approved_senders_as_string, id: :scrapy_config_approved_senders, name: 'scrapy_config[approved_senders]' %>
+    <%= f.label :approved_senders %>
+    <%= f.text_area :approved_senders_as_string, id: :scrapy_config_approved_senders, name: 'scrapy_config[approved_senders]' %>
 
   </div>
 
   <div class="field">
-    <%= form.label :approved_mail_subjects %>
-    <%= form.text_area :approved_mail_subjects_as_string, id: :scrapy_config_approved_mail_subjects, name: 'scrapy_config[approved_mail_subjects]'  %>
+    <%= f.label :approved_mail_subjects %>
+    <%= f.text_area :approved_mail_subjects_as_string, id: :scrapy_config_approved_mail_subjects, name: 'scrapy_config[approved_mail_subjects]'  %>
   </div>
 
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Attachment Type</th>
+      <th>Attachment Name</th>
+      <th>Priority</th>
+    </tr>
+    </thead>
+    <tbody class="attachments">
+    <%=f.simple_fields_for :attachments do |builder|%>
 
+      <%= render 'attachment_fields',f: builder %>
+    <% end %>
+    </tbody>
+
+  </table>
 
   </div>
   <div class="actions">
-    <%= form.submit %>
+    <%= f.submit %>
+    <%= link_to_add_association 'Add Attachment', f, :attachments ,class: 'btn btn-primary', data: {association_insertion_node: '.attachments',association_insertion_method: :append} %>
+
   </div>
 <% end %>

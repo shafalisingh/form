@@ -1,3 +1,4 @@
+
 class ScrapyConfig < ApplicationRecord
   serialize :approved_senders, Array
   serialize :approved_mail_subjects, Array

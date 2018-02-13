@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226190738) do
+ActiveRecord::Schema.define(version: 20171228225816) do
+
+  create_table "attach_files", force: :cascade do |t|
+    t.string "attachment_type"
+    t.string "attachment_name"
+    t.integer "priority"
+    t.string "maps_to"
+    t.integer "scrapy_config_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scrapy_config_id"], name: "index_attach_files_on_scrapy_config_id"
+  end
 
   create_table "attachment_options", force: :cascade do |t|
     t.integer "attachment_id"

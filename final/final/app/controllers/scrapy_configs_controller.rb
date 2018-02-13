@@ -16,6 +16,7 @@ class ScrapyConfigsController < ApplicationController
   # GET /scrapy_configs/new
   def new
     @scrapy_config = ScrapyConfig.new
+    @scrapy_config.attachments.build
   end
 
   # GET /scrapy_configs/1/edit
@@ -77,6 +78,6 @@ class ScrapyConfigsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def scrapy_config_params
-    params.require(:scrapy_config).permit(:client_id, :tgm_assigned_mailbox, :approved_senders, :approved_mail_subjects)
+    params.require(:scrapy_config).permit(:client_id, :tgm_assigned_mailbox, :approved_senders, :approved_mail_subjects, attachments_attributes: Attachment.attribute_names.map(&:to_sym).push(:_destroy))
   end
 end

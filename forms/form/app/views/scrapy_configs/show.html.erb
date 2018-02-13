@@ -23,8 +23,9 @@
 
 
 <p>
-  <strong>Attachment Type:</strong>
+
   <% for attachments in @scrapy_config.attachments %>
+    <strong>Attachment Type:</strong>
     <%=h attachments.type_of_attachment %>
   <% end %>
 </p>

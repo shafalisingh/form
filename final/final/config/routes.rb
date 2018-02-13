@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :attachments
   resources :clients
   resources :scrapy_configs
   root 'scrapy_configs#index'
