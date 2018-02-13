@@ -2,8 +2,9 @@
 class ScrapyConfig < ApplicationRecord
   serialize :approved_senders, Array
   serialize :approved_mail_subjects, Array
-  validates_presence_of :client_id
-
+  #validates_presence_of :client_id
+  has_many :attachments, dependent: :destroy
+  accepts_nested_attributes_for :attachments, allow_destroy: true
 
   #validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   def approved_senders_as_string

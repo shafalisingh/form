@@ -79,13 +79,13 @@ class ScrapyConfigsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scrapy_config
-      @scrapy_config = ScrapyConfig.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_scrapy_config
+    @scrapy_config = ScrapyConfig.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def scrapy_config_params
-      params.require(:scrapy_config).permit(:client_id, :tgm_assigned_mailbox, :approved_senders, :approved_mail_subjects, attachments_attributes: Attachment.attribute_names.map(&:to_sym).push(:_destroy))
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def scrapy_config_params
+    params.require(:scrapy_config).permit(:client_id, :tgm_assigned_mailbox, :approved_senders, :approved_mail_subjects, attachments_attributes: Attachment.attribute_names.map(&:to_sym).push(:_destroy))
+  end
 end

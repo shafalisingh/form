@@ -21,6 +21,27 @@
   <%= @scrapy_config.approved_mail_subjects.join ', ' %>
 </p>
 
+<p>
+  <strong>Attachment Type:</strong>
+<% for attachment in @scrapy_config.attachments %>
+  <%=h attachment.attachment_type %>
+  <% end %>
+</p>
 
+
+<p>
+  <strong>Attachment Name:</strong>
+  <% for attachment in @scrapy_config.attachments %>
+    <%=h attachment.attachment_name%>
+  <% end %>
+</p>
+
+
+<p>
+  <strong>Priority:</strong>
+  <% for attachment in @scrapy_config.attachments %>
+    <%=h attachment.priority %>
+  <% end %>
+</p>
 <%= link_to 'Edit', edit_scrapy_config_path(@scrapy_config) %> |
 <%= link_to 'Back', scrapy_configs_path %>

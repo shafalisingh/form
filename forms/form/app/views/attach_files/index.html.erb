@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Attach Files</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Attachment type</th>
+      <th>Attachment name</th>
+      <th>Priority</th>
+      <th>Maps to</th>
+      <th>Scrapy config</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attach_files.each do |attach_file| %>
+      <tr>
+        <td><%= attach_file.attachment_type %></td>
+        <td><%= attach_file.attachment_name %></td>
+        <td><%= attach_file.priority %></td>
+        <td><%= attach_file.maps_to %></td>
+        <td><%= attach_file.scrapy_config %></td>
+        <td><%= link_to 'Show', attach_file %></td>
+        <td><%= link_to 'Edit', edit_attach_file_path(attach_file) %></td>
+        <td><%= link_to 'Destroy', attach_file, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attach File', new_attach_file_path %>

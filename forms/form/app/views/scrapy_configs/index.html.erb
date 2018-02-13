@@ -1,4 +1,3 @@
-
 <p id="notice"><%= notice %></p>
 
 <h1>Scrapy Configs</h1>
@@ -19,18 +18,18 @@
 
   <tbody>
   <div class="group">
-  <% @scrapy_configs.each do |scrapy_config| %>
-    <tr>
-      <td><%= scrapy_config.client_id %></td>
-      <td><%= scrapy_config.tgm_assigned_mailbox %></td>
-      <td><%= scrapy_config.approved_senders.join(", ") %></td>
-      <td><%= scrapy_config.approved_mail_subjects.join(", ")%></td>
+    <% @scrapy_configs.each do |scrapy_config| %>
+      <tr>
+        <td><%= scrapy_config.client_id %></td>
+        <td><%= scrapy_config.tgm_assigned_mailbox %></td>
+        <td><%= scrapy_config.approved_senders.join(", ") %></td>
+        <td><%= scrapy_config.approved_mail_subjects.join(", ")%></td>
 
-      <td><%= link_to 'Show', scrapy_config %></td>
-      <td><%= link_to 'Edit', edit_scrapy_config_path(scrapy_config) %></td>
-      <td><%= link_to 'Destroy', scrapy_config, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-  <% end %>
+        <td><%= link_to 'Show', scrapy_config %></td>
+        <td><%= link_to 'Edit', edit_scrapy_config_path(scrapy_config) %></td>
+        <td><%= link_to 'Destroy', scrapy_config, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
   <tbody>
 
 
@@ -41,7 +40,7 @@
       <%end%>
   <% end %>
   </tbody>
-  </table>
+</table>
 
 
 
